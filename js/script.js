@@ -16,7 +16,9 @@ while (opcion != "X") {
         saldoIngresado = parseInt(prompt('Ingrese el monto a retirar')); if(saldoIngresado>saldo) {
             alert('Saldo insuficiente')   
         }else {
-            alert('Retiro de dinero exitoso, su nuevo saldo es $'+ (saldo-saldoIngresado))
+          saldo = saldo - saldoIngresado;
+
+          alert('Retiro de dinero exitoso, su nuevo saldo es $' + saldo)
 
         }
       break;
@@ -29,7 +31,7 @@ while (opcion != "X") {
         } else{
           alert('Ingrese un monto valido')
         }
-        // alert('Usted está haciendo un deposito')3
+       
       break;
 
     default:
