@@ -1,10 +1,6 @@
 // variables
 let saldo = 23500;
 
-// Realizamos todas las operaciones disponibles por el "cajero" en funciones
-// Nombramos las funciones con verbos en infinitivo
-// Le pasamos por parámetro los datos de entrada, que serán el saldo actual
-// y el monto a operar
 
 // Creamos array y agregamos objetos en el
 
@@ -42,6 +38,10 @@ function transferir() {
   }
 
   let contactos = prompt(mensaje) ;
+
+  // hacemos un while y creamos un switch para poder elejir la opcion que queremos
+
+  // IMPORTANTEEEEEEEE!! BUSCAR LA FORMA DE QUE NO ME SIGA TIRANDO EL PROMPT DE TRANSFERENCIA
 
   while (contactos.toLocaleUpperCase() != "x") {
     switch (contactos) {
@@ -97,6 +97,7 @@ function transferir() {
     }
   }
 }
+
 
 function retirarDinero(saldoActual, monto) {
   return saldoActual - monto;
