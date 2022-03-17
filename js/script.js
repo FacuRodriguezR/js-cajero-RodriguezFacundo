@@ -6,7 +6,7 @@ let depositoSaldo =0;
 let nuevoSaldo = (saldo+depositoSaldo);
 
 let opcion = prompt(
-  "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. Presioná X para finalizar"
+  "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. Presioná X para finalizar"
 );
 // fin variables
 
@@ -59,6 +59,9 @@ while (opcion != "X") {
         }
        
       break;
+
+    case '4':
+      
 
     default:
         alert('Opcion Incorrecta')
