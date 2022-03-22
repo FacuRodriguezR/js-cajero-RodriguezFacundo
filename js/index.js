@@ -27,6 +27,10 @@ listaDestinatario.push(
 listaDestinatario.push(
   new Destinatario("4", "Estefania Maroto", "8352417968552", "Banco Macro")
 );
+let busquedaBanco = "Supervielle"
+let arrayBusqueda = listaDestinatario.find((elemento)=> elemento.banco == busquedaBanco)
+
+console.table(arrayBusqueda);
 
 // FUNCION PARA TRANSFERIR DINERO
 function transferir() {
@@ -49,14 +53,18 @@ function transferir() {
         let transferencia = prompt('Ingrese el monto que desea transferir a Maria Cortez');
 
       if (transferencia < saldo) {
+      
         alert('Transferencia exitosa');
       } else {
         alert('Saldo insuficiente');
       }
         break;
+        
       case "2":
+
         let transferencia2 = prompt('Ingrese el monto que desea transferir a Celeste Fiocchette')
         if (transferencia2 < saldo) {
+        
           alert('Transferencia exitosa');
         } else {
           alert('Saldo insuficiente');
@@ -68,13 +76,14 @@ function transferir() {
         let transferencia3 = prompt('Ingrese el monto que desea transferir a Mercedes Tagliafaro');
 
         if (transferencia3 < saldo) {
+  
           alert('Transferencia exitosa');
         } else {
           alert('Saldo insuficiente');
 
-          opcion = prompt(
-            "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
-          );
+          // opcion = prompt(
+          //   "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
+          // );
         } 
 
         break;
@@ -83,6 +92,7 @@ function transferir() {
         let transferencia4 = prompt('Ingrese el monto que desea transferir a Estefania Maroto');
 
         if (transferencia4 < saldo) {
+          
           alert('Transferencia exitosa');
         } else {
           alert('Saldo insuficiente');
@@ -90,7 +100,7 @@ function transferir() {
 
         break;
       default:
-        opcion = prompt(
+        contactos = prompt(
           "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
         );
         break;
@@ -167,3 +177,95 @@ while (opcion.toUpperCase() != "X") {
     "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
   );
 }
+
+// CODIGO Y ARRAY DE TIENDA
+
+let productos = [
+  {   
+      id:1,
+      nombre:"Cocina",
+      precio: "$50000",
+      puntos: 9600,
+      imagen:"/images/cocina.jpg",
+  },
+
+  {   
+      id:2,
+      nombre:"Heladera",
+      precio: "$168999",
+      puntos: 10400,
+      imagen:"/images/heladera.jpg",
+  },
+
+  {   
+      id:3,
+      nombre:"Aire Acondicionado",
+      precio: "$189999",
+      puntos: 20000,
+      imagen:"/images/aire-acondicionado.jpg",
+  },
+
+  {   
+      id:4,
+      nombre:"Lavarropas",
+      precio: "$125499",
+      puntos: 10300,
+      imagen:"/images/lavarropas-1.png",
+  },
+
+  {   
+      id:5,
+      nombre:"Microondas",
+      precio: "$32500",
+      puntos: 5800 ,
+      imagen:"/images/microondas.jpg",
+  },
+
+  {   
+      id:6,
+      nombre:"Televisor",
+      precio: "$119899",
+      puntos: 10200,
+      imagen:"/images/televisor.webp",
+  },
+
+  {   
+    id:7,
+    nombre:"Lavavajillas",
+    precio: "$100999",
+    puntos: 10600,
+    imagen:"/images/lavavajilla.jpg",
+},
+
+{   
+  id:8,
+  nombre:"Cafetera 3 en 1",
+  precio: "$28799",
+  puntos: 6700,
+  imagen:"/images/cafetera.jpg",
+},
+];
+
+let productosPuntos = productos.filter((elemento)=> elemento.puntos > "10000")
+
+console.table(productosPuntos);
+
+
+const contenedor = document.getElementById("container");
+productos.forEach((producto)=>{
+  let card = document.createElement('div');
+  card.classList.add("card","col-sm-12","col-lg-3");
+  card.innerHTML =  `<img src=${producto.imagen} class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${producto.nombre}</h5>
+    <p class="card-text">${producto.precio}</p>
+    <p class="card-text">${producto.puntos}</p>
+    <a href="#" class="btn btn-primary">Comprar</a>
+    <a href="#" class="btn btn-primary">Canjear</a>
+  </div>`;
+  
+  contenedor.appendChild(card);
+}
+
+
+);
