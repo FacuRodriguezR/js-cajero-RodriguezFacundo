@@ -27,6 +27,7 @@ listaDestinatario.push(
 listaDestinatario.push(
   new Destinatario("4", "Estefania Maroto", "8352417968552", "Banco Macro")
 );
+// HACEMOS UNA BUSQUEDA DEL PRIMER CONTACTO QUE TENGA COMO BANCO ASIGNADO "SUPERVIELLE"
 let busquedaBanco = "Supervielle"
 let arrayBusqueda = listaDestinatario.find((elemento)=> elemento.banco == busquedaBanco)
 
@@ -45,7 +46,7 @@ function transferir() {
 
   // hacemos un while y creamos un switch para poder elejir la opcion que queremos
 
-  // IMPORTANTEEEEEEEE!! BUSCAR LA FORMA DE QUE NO ME SIGA TIRANDO EL PROMPT DE TRANSFERENCIA
+  // CORREGIR COSAS PARA QUE APAREZCAN DE NUEVO LAS OPCIONES DE TRANSFERENCIAS
 
   while (contactos.toLocaleUpperCase() != "x") {
     switch (contactos) {
@@ -100,11 +101,14 @@ function transferir() {
 
         break;
       default:
-        contactos = prompt(
-          "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
-        );
+          alert('Elija una opcion valida')
+
+
         break;
     }
+    opcion = prompt(
+      "Elegí una opción: 1- Saldos. 2 - Retiro de dinero. 3 - Depositos. 4 - Transferencias. - Presioná X para finalizar"
+    );
   }
 }
 
@@ -246,11 +250,12 @@ let productos = [
 },
 ];
 
+// HACEMOS UN FILTRO PARA QUE NOS DEVUELVA UN ARRAY CON LOS ELEMENTOS QUE REQUIERAN MAS DE 10000 PUNTOS 
 let productosPuntos = productos.filter((elemento)=> elemento.puntos > "10000")
 
 console.table(productosPuntos);
 
-
+// CREAMOS LA CARD UTILIZANDO LOS ELEMENTOS DEL ARRAY Y CON CLASES DE BOOT, COMO HIZO VANI EN EL AFTER
 const contenedor = document.getElementById("container");
 productos.forEach((producto)=>{
   let card = document.createElement('div');
