@@ -12,7 +12,7 @@ h1 {
   font-size: 2em;
   color: rgb(231, 85, 85);
   text-align: center;
-  margin-top: 100px;
+  
 }
 
 
@@ -29,14 +29,44 @@ ul{
   padding-right: 3px;
   margin: 4px;
 }
+
+button{
+  padding: 40px;
+}
 /* ESTILOS ID'S */
 #letracoder{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: yellow;
+  color: rgb(0, 0, 0);
   }
   
   #letraBank{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: whitesmoke;
+    color: rgb(211, 197, 1);
+    
+  }
+
+
+
+  #tituloPrincipal{
+   margin: 60px;
+   
   }
   /* ESTILOS CLASES */
+
+  .container {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
+  .bodyIndex{
+    background-color: rgb(26, 26, 26);
+  }
+  
+  .boton{
+    background-color: rgb(187, 187, 14);
+    color: black;
+    font-size: 20px;
+    margin: 20px;
+      
+    }
