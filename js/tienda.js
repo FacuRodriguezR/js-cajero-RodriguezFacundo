@@ -1,3 +1,6 @@
+const contenedor = document.getElementById("container");
+const canjear = document.getElementById("botonCanjear");
+
 // CODIGO Y ARRAY DE TIENDA
 
 let productos = [
@@ -72,7 +75,7 @@ let productosPuntos = productos.filter((elemento) => elemento.puntos > "10000");
 console.table(productosPuntos);
 
 // CREAMOS LA CARD UTILIZANDO LOS ELEMENTOS DEL ARRAY Y CON CLASES DE BOOT
-const contenedor = document.getElementById("container");
+
 productos.forEach((producto) => {
   let card = document.createElement("div");
   card.classList.add("card", "col-sm-12", "col-lg-3");
@@ -80,10 +83,16 @@ productos.forEach((producto) => {
     <div class="card-body">
       <h5 class="card-title">${producto.nombre}</h5>
       <p class="card-text">${producto.precio}</p>
-      <p class="card-text">${producto.puntos}</p>
-      <a href="#" class="btn btn-primary">Comprar</a>
-      <a href="#" class="btn btn-primary">Canjear</a>
+      <p class="card-text">${producto.puntos+ " puntos"}</p>
+      <a href="#" class="btn btn-primary" id="botonComprar">Comprar</a>
+      <a href="#" class="btn btn-primary" id="botonCanjear">Canjear</a>
     </div>`;
 
   contenedor.appendChild(card);
 });
+
+
+canjear.addEventListener("click", agregarCarrito)
+function agregarCarrito(){
+
+}

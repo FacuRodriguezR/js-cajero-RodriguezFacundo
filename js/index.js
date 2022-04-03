@@ -30,6 +30,7 @@ function accionRetiro() {
     saldo = retirarDinero(saldo, monto);
     alert("Retiro de dinero exitoso, su nuevo saldo es $" + saldo);
   }
+
 }
 
 // FIN BOTON RETIRO
