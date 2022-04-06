@@ -6,7 +6,7 @@ const contenedorCarrito = document.getElementById("carritoModal")
 let productos = [
   {
     id: 0,
-    nombre: "Cocina",
+    nombre: "Cocina Escorial",
     precio: "$50000",
     puntos: 9600,
     imagen: "/images/cocina.jpg",
@@ -14,7 +14,7 @@ let productos = [
 
   {
     id: 1,
-    nombre: "Heladera",
+    nombre: "Heladera Patrick",
     precio: "$168999",
     puntos: 10400,
     imagen: "/images/heladera.jpg",
@@ -22,7 +22,7 @@ let productos = [
 
   {
     id: 2,
-    nombre: "Aire Acondicionado",
+    nombre: "Aire Acondicionado BGH",
     precio: "$189999",
     puntos: 20000,
     imagen: "/images/aire-acondicionado.jpg",
@@ -30,7 +30,7 @@ let productos = [
 
   {
     id: 3,
-    nombre: "Lavarropas",
+    nombre: "Lavarropas Electrolux",
     precio: "$125499",
     puntos: 10300,
     imagen: "/images/lavarropas-1.png",
@@ -38,7 +38,7 @@ let productos = [
 
   {
     id: 4,
-    nombre: "Microondas",
+    nombre: "Microondas Whirlpool",
     precio: "$32500",
     puntos: 5800,
     imagen: "/images/microondas.jpg",
@@ -46,7 +46,7 @@ let productos = [
 
   {
     id: 5,
-    nombre: "Televisor",
+    nombre: "SMART TV LG 50' ",
     precio: "$119899",
     puntos: 10200,
     imagen: "/images/televisor.webp",
@@ -54,7 +54,7 @@ let productos = [
 
   {
     id: 6,
-    nombre: "Lavavajillas",
+    nombre: "Lavavajillas Drean",
     precio: "$100999",
     puntos: 10600,
     imagen: "/images/lavavajilla.jpg",
@@ -62,7 +62,7 @@ let productos = [
 
   {
     id: 7,
-    nombre: "Cafetera 3 en 1",
+    nombre: "Cafetera 3 en 1 Winco",
     precio: "$28799",
     puntos: 6700,
     imagen: "/images/cafetera.jpg",
@@ -74,8 +74,7 @@ let productos = [
 let carrito = [];
 
 
-
-
+localStorage.setItem("Carrito", JSON.stringify(carrito));
 
 
 
@@ -112,6 +111,10 @@ const agregarCarrito = (prodId) => {
   carrito.push(item)
   actualizarCarrito()
   console.log(carrito)
+
+  sessionStorage.setItem("Producto", JSON.stringify(carrito))
+
+ 
 }
 
 // creamos una funcion para actualizar nuestro carrito cada vez que cliqueemos
@@ -123,8 +126,10 @@ const actualizarCarrito = () => {
     const div = document.createElement('div')
     div.className = ("productosCarrito")
     div.innerHTML = `
+    <img src="${elemento.imagen}" alt="imagenproducto" height="70px" width="70px"/>
     <p>${elemento.nombre}</p>
     <p>${elemento.precio}</p>
+    <button type="button" class="boton botonElim btn btn-primary">Eliminar del carrito</button>
     
     `
     contenedorCarrito.appendChild(div)
