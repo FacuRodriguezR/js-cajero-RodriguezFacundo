@@ -71,10 +71,7 @@ let productos = [
 
 
 // ARRAY CARRITO COMPRAS  CON SU CONSTRUCTOR
-let carrito = [];
 
-
-localStorage.setItem("Carrito", JSON.stringify(carrito));
 
 
 
@@ -134,4 +131,13 @@ const actualizarCarrito = () => {
     `
     contenedorCarrito.appendChild(div)
   })
+}
+
+let carrito = [];
+
+
+if (JSON.parse(sessionStorage.getItem("Producto"))){
+  carrito = JSON.parse(sessionStorage.getItem("Producto"));
+  actualizarCarrito();
+
 }
