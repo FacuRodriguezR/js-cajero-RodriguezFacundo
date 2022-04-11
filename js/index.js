@@ -11,7 +11,7 @@ botonConsulta.addEventListener("click", accionBotonSaldo)
 
 
 function accionBotonSaldo ( ){
-  alert("Tu saldo es $" + saldo);
+  Swal.fire('Tu saldo es de $' + saldo)
 };
 // fin boton saldo
 /* ******************************************************* */ 
@@ -23,12 +23,30 @@ botonExtraccion.addEventListener("click", accionRetiro)
 function accionRetiro() {
   let monto = parseFloat(prompt("Ingrese el monto a retirar"));
   if (monto > saldo) {
-    alert("Saldo insuficiente");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Saldo insuficiente',
+     
+    })
   } else if (monto <= 0) {
-    alert("Ingrese un monto válido");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingrese un monto válido',
+     
+    })
   } else {
     saldo = retirarDinero(saldo, monto);
-    alert("Retiro de dinero exitoso, su nuevo saldo es $" + saldo);
+    
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Retiro de dinero exitoso',
+      text: 'Su nuevo saldo es de $' + saldo,
+     
+    })
+
   }
 
 }
@@ -45,15 +63,21 @@ function accionDeposito (){
   let depositoSaldo = parseFloat(prompt("Ingrese el monto a depositar"));
   if (depositoSaldo > 0) {
     saldo = depositarDinero(saldo, depositoSaldo);
-    alert(
-      "Usted deposito $" +
-        depositoSaldo +
-        "." +
-        " Su nuevo saldo es $" +
-        saldo
-    );
+   
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Usted depositó $' + depositoSaldo + '.',
+      text: 'Su nuevo saldo es de $' + saldo,
+     
+    })
   } else {
-    alert("Ingrese un monto valido");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingrese un monto válido',
+     
+    })
   }
 }
 

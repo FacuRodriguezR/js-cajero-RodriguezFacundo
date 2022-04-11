@@ -67,6 +67,7 @@ button {
   font-family: "Chakra Petch", sans-serif;
   text-shadow: 0 0 5px rgb(93, 161, 240), 0 0 15px rgb(93, 161, 240),
     0 0 30px rgb(93, 161, 240), 0 0 50px rgb(93, 161, 240);
+
 }
 
 .btn-primary {
@@ -78,8 +79,9 @@ button {
 
 .footer {
   background-color: rgb(37, 37, 37);
-  padding: 50px;
+  padding: 40px;
   font-family: "Chakra Petch", sans-serif;
+
 }
 
 .footer p {
@@ -134,9 +136,37 @@ button {
   padding: 20px;
 }
 
+.carritoButton{
+ padding: 20px;
+ display: flex;
+justify-content: right;
+background-color: rgb(136, 136, 136);
+}
 
+
+.botonCarrito {
+  background-color: rgb(228, 224, 241);
+  box-shadow: 0 0 5px rgb(93, 161, 240), 0 0 15px rgb(93, 161, 240),
+  0 0 30px rgb(93, 161, 240) 
+  
+}
+
+.botonCarrito:hover {
+  background-color: gray;
+}
 .botonElim{
   
 font-size: 14px;
+
+}
+
+.mainIndex{
+  background-color: aliceblue;
+  display: block;
+}
+
+#sectionButton{
+  padding: 68px;
+  margin: 20px;
 
 }
