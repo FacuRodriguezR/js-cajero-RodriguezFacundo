@@ -87,38 +87,31 @@ function accionDeposito (){
 
 // IMPORTANTE, TRATAR DE SACAR ESE BUG
 
+
+
+
+// console.table(arrayBusqueda);
+const lista = document.getElementById("botonTransf")
+
+fetch("/index.json")
+.then(response => response.json())
+.then((data) =>{
+ data.forEach((destinatario)=>{
+   const li = document.createElement("li")
+   li.innerHTML = `
+   <h4>Nombre: ${destinatario.nombre}</h4>
+   <h4>CBU: ${destinatario.CBU}</h4>
+   <h4>Banco: ${destinatario.banco}</h4>
+   <button id="transferir" class="boton btn btn-primary">Transferir Dinero</button>
+   <hr>
+   `
+   lista.append(li)
+ })
+ 
+} )
+
 let botonTransferir = document.getElementById("botonTransferencia")
 botonTransferir.addEventListener("click", transferir)
-// Creamos array y agregamos objetos en el
-
-const listaDestinatario = [];
-
-class Destinatario {
-  constructor(id, nombre, CBU, banco) {
-    this.id = id;
-    this.nombre = nombre;
-    this.CBU = CBU;
-    this.banco = banco;
-  }
-}
-
-listaDestinatario.push(
-  new Destinatario("1", "Maria Cortez", "8852887741233", "BBVA Francés")
-);
-listaDestinatario.push(
-  new Destinatario("2", "Celeste Fiocchette", "10258596748", "Supervielle")
-);
-listaDestinatario.push(
-  new Destinatario("3", "Mercedes Tagliafaro", "9673528461221", "Supervielle")
-);
-listaDestinatario.push(
-  new Destinatario("4", "Estefania Maroto", "8352417968552", "Banco Macro")
-);
-// HACEMOS UNA BUSQUEDA DEL PRIMER CONTACTO QUE TENGA COMO BANCO ASIGNADO "SUPERVIELLE"
-let busquedaBanco = "Supervielle"
-let arrayBusqueda = listaDestinatario.find((elemento)=> elemento.banco == busquedaBanco)
-
-console.table(arrayBusqueda);
 
 // FUNCION PARA TRANSFERIR DINERO
 function transferir() {

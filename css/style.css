@@ -170,3 +170,21 @@ font-size: 14px;
   margin: 20px;
 
 }
+
+#botonTransf{
+  display: block;
+  list-style: none;
+  background-color: grey;
+  
+  font-family:  "Chakra Petch", sans-serif;
+  color: white ;
+  text-shadow: 0 0 5px rgb(93, 161, 240), 0 0 15px rgb(93, 161, 240),
+  0 0 30px rgb(93, 161, 240), 0 0 50px rgb(93, 161, 240);
+}
+
+#botonTransf h4{
+  font-size: 16px;
+}
+#botonTransf li {
+  padding: 10px;
+}

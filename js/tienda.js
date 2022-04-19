@@ -1,5 +1,6 @@
 const contenedor = document.getElementById("container");
 const contenedorCarrito = document.getElementById("carritoModal")
+const url = "/tienda.json"
 
 // CODIGO Y ARRAY DE TIENDA
 
@@ -100,7 +101,7 @@ productos.forEach((producto) => {
 
  
 });
-
+// CARRITO
 // creamos la funcion de agregar al carrito
 
 const agregarCarrito = (prodId) => {
@@ -141,3 +142,7 @@ if (JSON.parse(sessionStorage.getItem("Producto"))){
   actualizarCarrito();
 
 }
+
+
+// API'S
+
