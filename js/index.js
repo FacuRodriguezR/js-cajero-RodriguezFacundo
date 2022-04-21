@@ -1,23 +1,26 @@
 // variables
 let saldo = 23500;
-
+const botonTransferencia = document.getElementById("botonTransferencia")
+let botonAdicionarDinero = document.getElementById("botonDeposito")
+let botonExtraccion = document.getElementById("botonRetiro")
+let botonConsulta = document.getElementById("botonSaldo")
 
 // intentamos agregar eventos a la pagina por cada boton
 
-// boton saldo
+//BOTON SALDO
 
-let botonConsulta = document.getElementById("botonSaldo")
+
 botonConsulta.addEventListener("click", accionBotonSaldo)
 
 
 function accionBotonSaldo ( ){
   Swal.fire('Tu saldo es de $' + saldo)
 };
-// fin boton saldo
-/* ******************************************************* */ 
-/* boton retiro dinero*/
+// FIN BOTON SALDO
 
-let botonExtraccion = document.getElementById("botonRetiro")
+// BOTON RETIRO DE DINERO
+
+
 botonExtraccion.addEventListener("click", accionRetiro)
 
 function accionRetiro() {
@@ -54,7 +57,7 @@ function accionRetiro() {
 // FIN BOTON RETIRO
 /* ******************************************************* */ 
 // BOTON INGRESO DINERO 
-let botonAdicionarDinero = document.getElementById("botonDeposito")
+
 botonAdicionarDinero.addEventListener("click", accionDeposito)
 
 // funcion accionDeposito
@@ -81,16 +84,12 @@ function accionDeposito (){
   }
 }
 
-// FIN BOTON INGRESO 
-/* ******************************************************* */ 
-//  BOTON TRANSFERENCIA
-
-// IMPORTANTE, TRATAR DE SACAR ESE BUG
 
 
 
 
-// console.table(arrayBusqueda);
+
+
 const lista = document.getElementById("botonTransf")
 
 fetch("/index.json")
@@ -110,7 +109,7 @@ fetch("/index.json")
  
 } )
 
-let botonTransferir = document.getElementById("botonTransferencia")
+
 botonTransferir.addEventListener("click", transferir)
 
 // FUNCION PARA TRANSFERIR DINERO

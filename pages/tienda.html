@@ -40,8 +40,10 @@
 
 
   <div id="carrito" class="carritoButton">
-    <button type="button" class="botonCarrito btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/images/carrito.png" alt="carrito" class="imagenCarrito">
+    <button type="button" class="botonCarrito btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="/images/carrito.png" alt="carrito" class="imagenCarrito"><span id="contadorCarrito">0</span>
     </button>
+    
+    
     
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,9 +56,14 @@
           <div class="modal-body" id="carritoModal">
            
           </div>
+         
+          <p class="precioProducto">Precio total: <span id="precioTotal"></span></p>
+        
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Comprar</button>
+            <button type="button" class="btn btn-primary" id="botonComprar">Comprar</button>
+            <button type="button" class="btn btn-primary" id="botonEliminar">Vaciar carrito</button>
+            
           </div>
         </div>
       </div>
@@ -89,5 +96,6 @@
       crossorigin="anonymous"
     ></script>
   
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

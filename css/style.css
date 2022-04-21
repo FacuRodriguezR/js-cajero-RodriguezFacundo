@@ -188,3 +188,13 @@ font-size: 14px;
 #botonTransf li {
   padding: 10px;
 }
+
+#botonEliminar{
+  text-shadow: 0 0 5px rgb(248, 0, 0), 0 0 15px rgb(255, 0, 0),
+  0 0 30px rgb(252, 0, 0), 0 0 50px rgb(255, 8, 8);
+}
+
+#contadorCarrito{
+  color: black;
+  font-weight: bold;
+}

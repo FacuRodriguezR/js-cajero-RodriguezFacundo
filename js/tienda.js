@@ -1,6 +1,12 @@
 const contenedor = document.getElementById("container");
 const contenedorCarrito = document.getElementById("carritoModal")
-const url = "/tienda.json"
+const vaciarCarrito = document.getElementById("botonEliminar")
+const contadorCarrito = document.getElementById("contadorCarrito")
+const botonComprar = document.getElementById("botonComprar")
+const precioTotal = document.getElementById('precioTotal')
+
+
+
 
 // CODIGO Y ARRAY DE TIENDA
 
@@ -70,10 +76,35 @@ let productos = [
   },
 ];
 
+// BOTON COMPRA CARRITO: Basicamente acá simulamos la compra agregando un sweet alert, si la longitud es mayor a cero, tira un sucess, si no, larga un error
+botonComprar.addEventListener("click", ()=> {
+  if(carrito.length > 0){
+  Swal.fire({
+    icon: 'success',
+    title: 'Su compra fue realizada con éxito',
+    text: 'El pedido será entregado dentro de las 72h hábiles, ponele',
+   
+  })
+  carrito.length = 0
+  actualizarCarrito()
+}else{
+    Swal.fire({
+      icon: 'error',
+      title: '¡Que culiao!',
+      text: 'No has ingresado ningun producto al carrito',
+     
+    })
+  }
+ 
+})
 
-// ARRAY CARRITO COMPRAS  CON SU CONSTRUCTOR
 
+// VACIAR CARRITO: Lo que hacemos acá es agregar un evento al boton vaciar carrito e igualamos la longitud de el array carrito a 0, luego actualizamos el carrito
 
+vaciarCarrito.addEventListener('click', ()=> {
+  carrito.length = 0
+  actualizarCarrito()
+})
 
 
 // CREAMOS LA CARD UTILIZANDO LOS ELEMENTOS DEL ARRAY Y CON CLASES DE BOOT
@@ -114,6 +145,14 @@ const agregarCarrito = (prodId) => {
 
  
 }
+// creamos funcion para eliminar del carrito
+const eliminarCarrito = (prodId) => {
+  const item = carrito.find ((prod) => prod.id === prodId )
+  const indice = carrito.indexOf(item)
+  carrito.splice(indice, 1)
+
+  actualizarCarrito()
+}
 
 // creamos una funcion para actualizar nuestro carrito cada vez que cliqueemos
 
@@ -127,11 +166,14 @@ const actualizarCarrito = () => {
     <img src="${elemento.imagen}" alt="imagenproducto" height="70px" width="70px"/>
     <p>${elemento.nombre}</p>
     <p>${elemento.precio}</p>
-    <button type="button" class="boton botonElim btn btn-primary">Eliminar del carrito</button>
+    <button onclick="eliminarCarrito(${elemento.id})" class="boton botonElim btn btn-primary">Eliminar del carrito</button>
     
     `
     contenedorCarrito.appendChild(div)
   })
+
+  contadorCarrito.innerText = carrito.length
+ 
 }
 
 let carrito = [];
@@ -142,6 +184,7 @@ if (JSON.parse(sessionStorage.getItem("Producto"))){
   actualizarCarrito();
 
 }
+
 
 
 // API'S
