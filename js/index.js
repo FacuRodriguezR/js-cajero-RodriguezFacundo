@@ -1,176 +1,124 @@
 // variables
 let saldo = 23500;
-const botonTransferencia = document.getElementById("botonTransferencia")
-let botonAdicionarDinero = document.getElementById("botonDeposito")
-let botonExtraccion = document.getElementById("botonRetiro")
-let botonConsulta = document.getElementById("botonSaldo")
+let botonTransferencia = document.getElementById("transferir");
+let botonAdicionarDinero = document.getElementById("botonDeposito");
+let botonExtraccion = document.getElementById("botonRetiro");
+let botonConsulta = document.getElementById("botonSaldo");
 
-// intentamos agregar eventos a la pagina por cada boton
+// AGREGAMOS EVENTOS A CADA BOTON
+
+
+
 
 //BOTON SALDO
 
+botonConsulta.addEventListener("click", accionBotonSaldo);
 
-botonConsulta.addEventListener("click", accionBotonSaldo)
-
-
-function accionBotonSaldo ( ){
-  Swal.fire('Tu saldo es de $' + saldo)
-};
+function accionBotonSaldo() {
+  Swal.fire("Tu saldo es de $" + saldo);
+}
 // FIN BOTON SALDO
 
 // BOTON RETIRO DE DINERO
 
-
-botonExtraccion.addEventListener("click", accionRetiro)
+botonExtraccion.addEventListener("click", accionRetiro);
 
 function accionRetiro() {
   let monto = parseFloat(prompt("Ingrese el monto a retirar"));
   if (monto > saldo) {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Saldo insuficiente',
-     
-    })
+      icon: "error",
+      title: "Oops...",
+      text: "Saldo insuficiente",
+    });
   } else if (monto <= 0) {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Ingrese un monto válido',
-     
-    })
+      icon: "error",
+      title: "Oops...",
+      text: "Ingrese un monto válido",
+    });
   } else {
     saldo = retirarDinero(saldo, monto);
-    
 
     Swal.fire({
-      icon: 'success',
-      title: 'Retiro de dinero exitoso',
-      text: 'Su nuevo saldo es de $' + saldo,
-     
-    })
-
+      icon: "success",
+      title: "Retiro de dinero exitoso",
+      text: "Su nuevo saldo es de $" + saldo,
+    });
   }
-
 }
 
 // FIN BOTON RETIRO
-/* ******************************************************* */ 
-// BOTON INGRESO DINERO 
+/* ******************************************************* */
+// BOTON INGRESO DINERO
 
-botonAdicionarDinero.addEventListener("click", accionDeposito)
+botonAdicionarDinero.addEventListener("click", accionDeposito);
 
 // funcion accionDeposito
 
-function accionDeposito (){
+function accionDeposito() {
   let depositoSaldo = parseFloat(prompt("Ingrese el monto a depositar"));
   if (depositoSaldo > 0) {
     saldo = depositarDinero(saldo, depositoSaldo);
-   
 
     Swal.fire({
-      icon: 'success',
-      title: 'Usted depositó $' + depositoSaldo + '.',
-      text: 'Su nuevo saldo es de $' + saldo,
-     
-    })
+      icon: "success",
+      title: "Usted depositó $" + depositoSaldo + ".",
+      text: "Su nuevo saldo es de $" + saldo,
+    });
   } else {
     Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Ingrese un monto válido',
-     
-    })
+      icon: "error",
+      title: "Oops...",
+      text: "Ingrese un monto válido",
+    });
   }
 }
 
+const lista = document.getElementById("botonTransf");
+lista.addEventListener("click", transferenciaDinero)
 
-
-
-
-
-
-const lista = document.getElementById("botonTransf")
+function transferenciaDinero  (){
+  let montoTransf = parseFloat(prompt("Ingrese el monto que desea transferir"));
+  if(montoTransf > saldo){
+   Swal.fire({
+     icon: "error",
+     title: "Oops...",
+     text: "Saldo insuficiente",
+   });
+  } else if (montoTransf <= 0){
+   Swal.fire({
+     icon: "error",
+     title: "Oops...",
+     text: "Ingrese un monto válido",
+   });
+  } else {
+   Swal.fire({
+     icon: "success",
+     title: "Excelente",
+     text: "La transferencia fue existosa",
+   });
+  }
+ }
 
 fetch("/index.json")
-.then(response => response.json())
-.then((data) =>{
- data.forEach((destinatario)=>{
-   const li = document.createElement("li")
-   li.innerHTML = `
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((destinatario) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
    <h4>Nombre: ${destinatario.nombre}</h4>
    <h4>CBU: ${destinatario.CBU}</h4>
    <h4>Banco: ${destinatario.banco}</h4>
-   <button id="transferir" class="boton btn btn-primary">Transferir Dinero</button>
+   <button onclick="transferenciaDinero" id="botonTransf" class="boton btn btn-primary">Transferir Dinero</button>
    <hr>
-   `
-   lista.append(li)
- })
+   `;
+      lista.append(li);
+
  
-} )
-
-
-botonTransferir.addEventListener("click", transferir)
-
-// FUNCION PARA TRANSFERIR DINERO
-function transferir() {
-  let mensaje = "";
-  for (const element of listaDestinatario) {
-    mensaje += `${element.id} ${element.nombre}\n`
-
-   
-  }
-
-  let contactos = prompt(mensaje) ;
-
-  // hacemos un while y creamos un switch para poder elejir la opcion que queremos
-
-  // CORREGIR COSAS PARA QUE APAREZCAN DE NUEVO LAS OPCIONES DE TRANSFERENCIAS
-
-  while (contactos) {
-    switch (contactos) {
-      case "1":
-        let transferencia = parseFloat(prompt('Ingrese el monto que desea transferir a Maria Cortez'));
-
-     
-
-      transferencia < saldo ? alert('Transferencia exitosa') : alert('Saldo insuficiente')
-        break;
-        
-      case "2":
-
-        let transferencia2 = parseFloat(prompt('Ingrese el monto que desea transferir a Celeste Fiocchette'))
-       
-        transferencia2 < saldo ? alert('Transferencia exitosa') : alert('Saldo insuficiente')
-        
-
-        break;
-      case "3":
-
-        let transferencia3 = parseFloat(prompt('Ingrese el monto que desea transferir a Mercedes Tagliafaro'));
-
-          transferencia3 < saldo ? alert('Transferencia exitosa') : alert('Saldo insuficiente')
-        
-        break;
-
-      case "4":
-
-        let transferencia4 = parseFloat(prompt('Ingrese el monto que desea transferir a Estefania Maroto'));
-
-        transferencia4 < saldo ? alert('Transferencia exitosa') : alert('Saldo insuficiente')
-
-        break;
-
-      default:
-          alert('Elija una opcion valida');
-          
-
-        break;
-    }
-   
-  }
+    });
   
-}
+  });
 
 
 function retirarDinero(saldoActual, monto) {
@@ -180,6 +128,3 @@ function retirarDinero(saldoActual, monto) {
 function depositarDinero(saldoActual, monto) {
   return saldoActual + monto;
 }
-
-
-

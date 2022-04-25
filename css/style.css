@@ -64,6 +64,9 @@ button {
 }
 
 .navbar {
+  top: 0;
+  z-index: 999;
+  position: sticky;
   font-family: "Chakra Petch", sans-serif;
   text-shadow: 0 0 5px rgb(93, 161, 240), 0 0 15px rgb(93, 161, 240),
     0 0 30px rgb(93, 161, 240), 0 0 50px rgb(93, 161, 240);
@@ -118,26 +121,32 @@ button {
 }
 
 .productosCarrito{
+  margin: auto;
   background-color: rgb(36, 36, 36);
   text-align: center;
-  font-size: 16px ;
+  font-size: 13px ;
   font-family:  "Chakra Petch", sans-serif;
   color: white ;
   text-shadow: 0 0 5px rgb(93, 161, 240), 0 0 15px rgb(93, 161, 240),
   0 0 30px rgb(93, 161, 240), 0 0 50px rgb(93, 161, 240);
   display: flex;
-  padding:30px;
+  padding:20px;
   border-radius: 20px;
   margin: 10px 0 0 0;
   align-items: center;
 }
 
+.productosCarrito img{
+  height: 25px;
+  width: 25px;
+}
+
 .productosCarrito p {
-  padding: 20px;
+  padding: 15px;
 }
 
 .carritoButton{
- padding: 20px;
+ padding: 10px;
  display: flex;
 justify-content: right;
 background-color: rgb(136, 136, 136);
@@ -163,6 +172,13 @@ font-size: 14px;
 .mainIndex{
   background-color: aliceblue;
   display: block;
+}
+
+.precioProducto{
+  margin: 10px;
+}
+.precioProducto p{
+  font-weight: bold;
 }
 
 #sectionButton{
@@ -196,5 +212,9 @@ font-size: 14px;
 
 #contadorCarrito{
   color: black;
+  font-weight: bold;
+}
+
+#precioTotal{
   font-weight: bold;
 }
