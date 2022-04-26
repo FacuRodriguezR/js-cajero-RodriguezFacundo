@@ -7,14 +7,13 @@ const precioTotal = document.getElementById("precioTotal");
 
 // CODIGO Y ARRAY DE TIENDA
 
-let productos = [
-  {
+let productos = [{
     id: 0,
     nombre: "Cocina Escorial",
     precio: 50000,
     puntos: 9600,
     imagen: "/images/cocina.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -23,7 +22,7 @@ let productos = [
     precio: 168999,
     puntos: 10400,
     imagen: "/images/heladera.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -32,7 +31,7 @@ let productos = [
     precio: 189999,
     puntos: 20000,
     imagen: "/images/aire-acondicionado.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -41,7 +40,7 @@ let productos = [
     precio: 125499,
     puntos: 10300,
     imagen: "/images/lavarropas-1.png",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -50,7 +49,7 @@ let productos = [
     precio: 32500,
     puntos: 5800,
     imagen: "/images/microondas.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -59,7 +58,7 @@ let productos = [
     precio: 119899,
     puntos: 10200,
     imagen: "/images/televisor.webp",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -68,7 +67,7 @@ let productos = [
     precio: 100999,
     puntos: 10600,
     imagen: "/images/lavavajilla.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 
   {
@@ -77,28 +76,12 @@ let productos = [
     precio: 28799,
     puntos: 6700,
     imagen: "/images/cafetera.jpg",
-    cantidad:1
+    cantidad: 1,
   },
 ];
+let carrito = [];
 
-// BOTON COMPRA CARRITO: Basicamente acá simulamos la compra agregando un sweet alert, si la longitud es mayor a cero, tira un sucess, si no, larga un error
-botonComprar.addEventListener("click", () => {
-  if (carrito.length > 0) {
-    Swal.fire({
-      icon: "success",
-      title: "Su compra fue realizada con éxito",
-      text: "El pedido será entregado dentro de las 72h hábiles, ponele",
-    });
-    carrito.length = 0;
-    actualizarCarrito();
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "¡Que culiao!",
-      text: "No has ingresado ningun producto al carrito",
-    });
-  }
-});
+
 
 // VACIAR CARRITO: Lo que hacemos acá es agregar un evento al boton vaciar carrito e igualamos la longitud de el array carrito a 0, luego actualizamos el carrito
 
@@ -126,35 +109,35 @@ productos.forEach((producto) => {
 
   const boton = document.getElementById(`botonCanjear${producto.id}`);
 
-  // agregamos el evento al boton
+  // Agregamos el evento al boton
 
   boton.addEventListener("click", () => {
     agregarCarrito(producto.id);
   });
 });
 
-// creamos la funcion de agregar al carrito
+// Creamos la funcion de agregar al carrito
 
 const agregarCarrito = (prodId) => {
   // Acá lo que hacemos es verificar si el producto existe dentro del carrito
-  const existe = carrito.some (prod => prod.id === prodId)
-// si existe, sumar a la cantidad 1, para que no se repita el producto
-  if(existe){
-    const prod = carrito.map (prod => {
-      if (prod.id === prodId){
-        prod.cantidad++
+  const existe = carrito.some((prod) => prod.id === prodId);
+  // si existe, sumar a la cantidad 1, para que no se repita el producto
+  if (existe) {
+    const prod = carrito.map((prod) => {
+      if (prod.id === prodId) {
+        prod.cantidad++;
       }
-    })
-  }else{
-// si no existe, agregar un item
-  const item = productos.find((e) => e.id === prodId);
-  carrito.push(item);
-  console.log(carrito);
+    });
+  } else {
+    // Si no existe, agregar un item
+    const item = productos.find((e) => e.id === prodId);
+    carrito.push(item);
+    console.log(carrito);
   }
   actualizarCarrito();
   sessionStorage.setItem("Producto", JSON.stringify(carrito));
 };
-// creamos funcion para eliminar del carrito
+// Creamos funcion para eliminar del carrito
 const eliminarCarrito = (prodId) => {
   const item = carrito.find((prod) => prod.id === prodId);
   const indice = carrito.indexOf(item);
@@ -181,16 +164,36 @@ const actualizarCarrito = () => {
     `;
     contenedorCarrito.appendChild(div);
   });
-
-  contadorCarrito.innerText = carrito.length
-  precioTotal.innerText = carrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+  // Utilizamos el metodo reduce para poder sumar el precio total de los productos agregados
+  contadorCarrito.innerText = carrito.length;
+  precioTotal.innerText = carrito.reduce(
+    (acc, elemento) => acc + elemento.precio,
+    0
+  );
 };
 
-let carrito = [];
+
 
 if (JSON.parse(sessionStorage.getItem("Producto"))) {
   carrito = JSON.parse(sessionStorage.getItem("Producto"));
   actualizarCarrito();
 }
 
-// API'S
+// BOTON COMPRA CARRITO: Basicamente acá simulamos la compra agregando un sweet alert, si la longitud es mayor a cero, tira un sucess, si no, larga un error
+botonComprar.addEventListener("click", () => {
+  if (carrito.length > 0) {
+    Swal.fire({
+      icon: "success",
+      title: "Su compra fue realizada con éxito",
+      text: "El pedido será entregado dentro de las 72h hábiles, ponele",
+    });
+    carrito.length = 0;
+    actualizarCarrito();
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "¡Que culiao!",
+      text: "No has ingresado ningun producto al carrito",
+    });
+  }
+});

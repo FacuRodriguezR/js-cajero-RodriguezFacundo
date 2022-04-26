@@ -58,27 +58,26 @@ botonAdicionarDinero.addEventListener("click", accionDeposito);
 
 function accionDeposito() {
   let depositoSaldo = parseFloat(prompt("Ingrese el monto a depositar"));
-  if (depositoSaldo > 0) {
+
     saldo = depositarDinero(saldo, depositoSaldo);
 
-    Swal.fire({
-      icon: "success",
-      title: "Usted depositó $" + depositoSaldo + ".",
-      text: "Su nuevo saldo es de $" + saldo,
-    });
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Ingrese un monto válido",
-    });
-  }
+
+  depositoSaldo>0 ? Swal.fire({
+    icon: "success",
+    title: "Usted depositó $" + depositoSaldo + ".",
+    text: "Su nuevo saldo es de $" + saldo,
+  }) : Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Ingrese un monto válido",
+  })
 }
 
 const lista = document.getElementById("botonTransf");
 lista.addEventListener("click", transferenciaDinero)
 
 function transferenciaDinero  (){
+ 
   let montoTransf = parseFloat(prompt("Ingrese el monto que desea transferir"));
   if(montoTransf > saldo){
    Swal.fire({
@@ -97,9 +96,12 @@ function transferenciaDinero  (){
      icon: "success",
      title: "Excelente",
      text: "La transferencia fue existosa",
+     
    });
   }
+  saldo = transferirDinero(saldo, montoTransf);
  }
+// UTILIZAMOS FETCH Y MANIPULAMOS EL DOM
 
 fetch("/index.json")
   .then((response) => response.json())
@@ -127,4 +129,8 @@ function retirarDinero(saldoActual, monto) {
 
 function depositarDinero(saldoActual, monto) {
   return saldoActual + monto;
+}
+
+function transferirDinero(saldoActual, montoTransf){
+  return saldoActual - montoTransf;
 }
